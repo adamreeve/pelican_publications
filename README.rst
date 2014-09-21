@@ -4,13 +4,19 @@ using a ``publications`` restructured text directive.
 
 Usage::
 
-    .. publications:: path/to/publications.bib path/to/publications.html
+    .. publications:: path/to/publications.bib
+        :template: path/to/publications.html
         :sort: date
 
-In this example, publications.bib is a BibTeX file and publications.html
-is a Jinja2 template that accepts a lists of BibTeX entries.
-These BibTeX entries are dictionaries
-in the format used by the bibtexparser_ Python package.
+By default pelican_publications uses a ``publications`` template
+in the Pelican theme. This can be overridden by setting
+the template option as a path to a Jinja2 template.
+The template is passed one parameter, ``publications``, which is
+a list of BibTeX entries.
+These BibTeX entries are simple dictionaries
+in the format used by the bibtexparser_ Python package, with a few
+customisations such as converting page ranges to use an html en dash
+and splitting the author field into a list of authors.
 
 Possible sort options are:
 

@@ -1,1 +1,0 @@
-from pelican_bibtex.publications import register
