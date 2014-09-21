@@ -121,7 +121,10 @@ def tex_to_html(tex):
     # are missed, so fix them up here:
     return (tex
             .replace('\\&', '&amp;')
-            .replace('\\o', u'\xf8'))
+            .replace('\\o', u'\xf8')
+            .replace('---', '&mdash;')
+            .replace('--', '&ndash;')
+            )
 
 
 def split_authors(record):
