@@ -97,21 +97,17 @@ def customize(record):
     """ Customise bibtexparser records
     """
     record = customization.convert_to_unicode(record)
-    try:
-        author = record['author']
-        record['author'] = tex_to_html(author)
-    except KeyError:
-        pass
+    for field_name in ['author', 'title', 'journal']:
+        try:
+            field = record[field_name]
+            record[field_name] = tex_to_html(field)
+        except KeyError:
+            pass
     # Splits author into a list of authors:
     record = customization.author(record)
     # Now convert each author into a tuple of last, first name
     record = split_authors(record)
     record = pages_endash(record)
-    try:
-        title = record['title']
-        record['title'] = tex_to_html(title)
-    except KeyError:
-        pass
     return record
 
 
@@ -124,6 +120,10 @@ def tex_to_html(tex):
             .replace('\\o', u'\xf8')
             .replace('---', '&mdash;')
             .replace('--', '&ndash;')
+            .replace('\\{', '&#123;')
+            .replace('\\}', '&#125;')
+            .replace('{', '')
+            .replace('}', '')
             )
 
 
