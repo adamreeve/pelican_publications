@@ -86,7 +86,7 @@ def sort_entries(entries, sort_type):
 
 
 def month_ord(month_name):
-    normalised_name = month_name[0:4].lower()
+    normalised_name = month_name[0:3].lower()
     months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun',
               'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
     month_ords = dict((name, i) for i, name in enumerate(months))
